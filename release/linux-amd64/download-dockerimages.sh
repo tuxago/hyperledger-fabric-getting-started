@@ -14,8 +14,8 @@ dockerFabricPull() {
   for IMAGES in peer orderer couchdb ccenv javaenv kafka zookeeper; do
       echo "==> FABRIC IMAGE: $IMAGES"
       echo
-      docker pull hyperledger/fabric-$IMAGES:$FABRIC_TAG
-      docker tag hyperledger/fabric-$IMAGES:$FABRIC_TAG hyperledger/fabric-$IMAGES
+      docker pull talium/fabric-$IMAGES:$FABRIC_TAG
+      docker tag talium/fabric-$IMAGES:$FABRIC_TAG talium/fabric-$IMAGES
   done
 }
 
@@ -23,14 +23,14 @@ dockerCaPull() {
       local CA_TAG=$1
       echo "==> FABRIC CA IMAGE"
       echo
-      docker pull hyperledger/fabric-ca:$CA_TAG
-      docker tag hyperledger/fabric-ca:$CA_TAG hyperledger/fabric-ca
+      docker pull talium/fabric-ca:$CA_TAG
+      docker tag talium/fabric-ca:$CA_TAG talium/fabric-ca
 }
 usage() {
       echo "Description "
       echo
-      echo "Pulls docker images from hyperledger dockerhub repository"
-      echo "tag as hyperledger/fabric-<image>:latest"
+      echo "Pulls docker images from talium dockerhub repository"
+      echo "tag as talium/fabric-<image>:latest"
       echo
       echo "USAGE: "
       echo
@@ -43,7 +43,7 @@ usage() {
       echo "./download-dockerimages.sh -c x86_64-1.0.0-alpha -f x86_64-1.0.0-alpha"
       echo
       echo "By default, pulls fabric-ca and fabric 1.0.0-alpha docker images"
-      echo "from hyperledger dockerhub"
+      echo "from talium dockerhub"
       exit 0
 }
 
@@ -71,5 +71,5 @@ dockerFabricPull ${FABRIC_TAG}
 echo "===> Pulling fabric ca Image"
 dockerCaPull ${CA_TAG}
 echo
-echo "===> List out hyperledger docker images"
-docker images | grep hyperledger*
+echo "===> List out talium docker images"
+docker images | grep talium*

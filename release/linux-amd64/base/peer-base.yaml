@@ -1,8 +1,10 @@
 version: '2'
 services:
   peer-base:
-    image: hyperledger/fabric-peer
+    image: talium/fabric-peer
     environment:
+      - DOCKER_NS=talium
+      - BASE_DOCKER_NS=talium
       - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
       # the following setting starts chaincode containers on the same
       # bridge network as the peers
